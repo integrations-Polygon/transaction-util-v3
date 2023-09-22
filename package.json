@@ -5,8 +5,7 @@
   "scripts": {
     "clean": "npx hardhat clean",
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat deploy",
-    "verify": "npx hardhat verify",
+    "deploy": "npx hardhat deploy --network mumbai",
     "startScript": "npx hardhat run scripts/startScript.ts",
     "eslint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
     "eslint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
@@ -31,6 +30,7 @@
     "@types/node": "^18.11.10",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "axios": "^1.5.0",
     "crossenv": "^0.0.2-security",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
