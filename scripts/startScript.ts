@@ -14,9 +14,9 @@ const issueToken = async () => {
     console.log("-----------------------------------------\n");
     console.log("Choose which Methodology to used:");
     console.log("1. Using Heimdal Milestone API.");
-    console.log("2. Using ETH JSON RPC API method.");
+    console.log("2. Using ETH JSON RPC API method.\n");
 
-    const choice = prompt("Enter the choice: ");
+    const choice = prompt("Enter your choice: ");
     if (!choice) return console.log("\nChoice no. cannot be null");
     if (choice !== "1" && choice !== "2") console.log(`\nChoice no. ${choice} is unsupported`);
 
