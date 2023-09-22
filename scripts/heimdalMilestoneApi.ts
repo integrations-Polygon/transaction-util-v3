@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { milestoneFinalisedBlock } from "./utils/milestoneFinalisedBlock";
+import { msToMinAndSec } from "./utils/msToMinAndSec";
 
 export async function heimdalMilestoneApi(
   tx: ethers.providers.TransactionResponse,
@@ -38,19 +39,17 @@ export async function heimdalMilestoneApi(
     );
 
     /*
-      Get the current timestamp in seconds
+      Get the current timestamp in milisec
     */
-    const newTimestamp = Date.now() / 1000;
-    console.log(`Total time for new Milestone to be added in heimdal: ${(newTimestamp - timestamp) / 60000}`);
+    const newTimestamp = Date.now();
+    const totalMilestoneDuration = await msToMinAndSec(newTimestamp - timestamp);
+    console.log(`Total time for new Milestone to be added in heimdal: ${totalMilestoneDuration}`);
 
     /*
-      Log the total duration in mins
+      Log the total duration in mins and sec
     */
-    console.log(
-      `\nThe total duration required for the block to achieve finality: ${
-        (newTimestamp - mintedNftTimestamp) / 60000
-      }`
-    );
+    const totalFinalityDuration = await msToMinAndSec(newTimestamp - mintedNftTimestamp);
+    console.log(`\nThe total duration required for the block to achieve finality: ${totalFinalityDuration}`);
     console.log(`Your Block: ${yourBlock} is now finalized!`);
   } catch (error) {
     console.log(`Error at heimdalMilestoneApi: ${error}`);

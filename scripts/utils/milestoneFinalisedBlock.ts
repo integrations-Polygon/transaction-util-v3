@@ -7,7 +7,7 @@ export async function milestoneFinalisedBlock(): Promise<MilestoneData> {
     const response: Response = await fetch(MILESTONE_API);
     const milestoneData: MilestoneApiResponse = await response.json(); // Extract JSON data from the response
     const endBlock: number = milestoneData.result.end_block;
-    const timestamp: number = milestoneData.result.timestamp;
+    const timestamp: number = milestoneData.result.timestamp * 1000; // Convert time to milisec from sec
 
     return { endBlock, timestamp };
   } catch (error) {

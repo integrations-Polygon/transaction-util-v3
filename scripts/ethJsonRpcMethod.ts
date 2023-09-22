@@ -1,5 +1,6 @@
 import axios from "axios";
 import { MUMBAI_RPC_URL } from "./utils/constants";
+import { msToMinAndSec } from "./utils/msToMinAndSec";
 
 export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: number): Promise<void> {
   try {
@@ -40,11 +41,10 @@ export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: nu
         /*
           Get the current timestamp in seconds
         */
-        const newTimestamp = Date.now() / 60000;
+        const newTimestamp = Date.now();
+        const totalFinalityDuration = await msToMinAndSec(newTimestamp - mintedNftTimestamp);
         console.log(
-          `\nThe total duration required for the block to achieve finality: ${
-            (newTimestamp - mintedNftTimestamp) / 60000
-          } mins`
+          `\nThe total duration required for the block to achieve finality: ${totalFinalityDuration}`
         );
         console.log(`Your Block: ${yourBlock} is now finalized!`);
       }

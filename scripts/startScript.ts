@@ -9,7 +9,10 @@ const issueToken = async () => {
     /* ---------------------------- INPUT ------------------------------ */
 
     console.clear();
-    console.log("Choose while Methodology to used:");
+    console.log("\n-----------------------------------------");
+    console.log(`PIP 11's MILESTONE FINALITY API TEST`);
+    console.log("-----------------------------------------\n");
+    console.log("Choose which Methodology to used:");
     console.log("1. Using Heimdal Milestone API.");
     console.log("2. Using ETH JSON RPC API method.");
 
@@ -26,7 +29,9 @@ const issueToken = async () => {
     const yourBlock: number = tx.blockNumber;
 
     /* ---------------------------- PIP-11 MILESTONE FINALITY CHECK ------------------------------ */
-
+    console.log("\n-----------------------------------------");
+    console.log(`BLOCK FINALITY`);
+    console.log("-----------------------------------------\n");
     /* 
       CHECK FINALITY USING HEIMDAL MILESTONE API
     */

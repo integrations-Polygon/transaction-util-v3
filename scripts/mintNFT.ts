@@ -27,9 +27,10 @@ export async function mintNFT(): Promise<MintData> {
     console.log("-----------------------------------------\n");
 
     /*
-        GENERATE RANDOM HASH
-      */
-    const hash: string = crypto.randomBytes(20).toString("hex");
+      GENERATE RANDOM HASH
+    */
+    const uriHash: string = crypto.randomBytes(20).toString("hex");
+    console.log(`Minting NFT with URI Hash: ${uriHash}`);
 
     /*
         GET SIGNER NONCE
@@ -44,7 +45,7 @@ export async function mintNFT(): Promise<MintData> {
     */
     const estimatedGasLimit: ethers.BigNumber = await testERC721.estimateGas.issueToken(
       signer.address,
-      hash,
+      uriHash,
       {
         gasLimit: 14_999_999,
         nonce: nonce,
@@ -56,7 +57,7 @@ export async function mintNFT(): Promise<MintData> {
     /*
       MINT NFT
     */
-    const mintResponse: ethers.ContractTransaction = await testERC721.issueToken(signer.address, hash, {
+    const mintResponse: ethers.ContractTransaction = await testERC721.issueToken(signer.address, uriHash, {
       gasLimit: estimatedGasLimit,
       nonce: nonce,
       maxFeePerGas: maxFee,
@@ -65,21 +66,23 @@ export async function mintNFT(): Promise<MintData> {
     await mintResponse.wait();
 
     /*
-      Get the timestamp when NFT mint happened in seconds
+      Get the timestamp when NFT mint happened in milisec
     */
-    const mintedNftTimestamp = Date.now() / 1000;
+    const mintedNftTimestamp = Date.now();
     const txHash: string = mintResponse.hash;
+    console.log("\nTransaction uriHash: ", txHash);
+
     const txReceipt: ethers.providers.TransactionReceipt = await provider.getTransactionReceipt(txHash);
 
     if (!txReceipt) {
-      console.error("Transaction not found.");
-      process.exit(1);
+      throw new Error("\nTransaction was not found.");
     }
-    // Get the transaction hash
+    console.log(`Transaction Details: https://mumbai.polygonscan.com/tx/${txHash}`);
+
+    // Get the transaction data
     const tx: ethers.providers.TransactionResponse = await provider.getTransaction(txHash);
     if (!tx) {
-      console.error("Cannot get transaction.");
-      process.exit(1);
+      throw new Error("\nCannot get transaction data");
     }
     return { tx, mintedNftTimestamp, provider };
   } catch (error) {
