@@ -1,6 +1,6 @@
 import axios from "axios";
-import { MUMBAI_RPC_URL } from "./utils/constants";
-import { msToMinAndSec } from "./utils/msToMinAndSec";
+import { MUMBAI_RPC_URL } from "../utils/constants";
+import { msToMinAndSec } from "../utils/msToMinAndSec";
 
 export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: number): Promise<void> {
   try {

@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import { milestoneFinalisedBlock } from "./utils/milestoneFinalisedBlock";
-import { msToMinAndSec } from "./utils/msToMinAndSec";
+import { milestoneFinalisedBlock } from "../utils/milestoneFinalisedBlock";
+import { msToMinAndSec } from "../utils/msToMinAndSec";
 
 export async function heimdalMilestoneApi(
   tx: ethers.providers.TransactionResponse,

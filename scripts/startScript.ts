@@ -1,7 +1,7 @@
-import { mintNFT } from "./mintNFT";
+import { mintNFT } from "./nftMethods/mintNFT";
 import ps from "prompt-sync";
-import { heimdalMilestoneApi } from "./heimdalMilestoneApi";
-import { ethJsonRpcMethod } from "./ethJsonRpcMethod";
+import { heimdalMilestoneApi } from "./milestoneApis/heimdalMilestoneApi";
+import { ethJsonRpcMethod } from "./milestoneApis/ethJsonRpcMethod";
 const prompt = ps();
 
 const issueToken = async () => {

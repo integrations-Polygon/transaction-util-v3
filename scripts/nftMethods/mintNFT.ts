@@ -1,9 +1,9 @@
-import { gasPriceFetcher } from "./utils/gasPriceFetcher";
-import { Web3Setup, GasData, MintData } from "./utils/types";
+import { gasPriceFetcher } from "../utils/gasPriceFetcher";
+import { Web3Setup, GasData, MintData } from "../utils/types";
 import { ethers } from "ethers";
 import crypto from "crypto";
-import { web3Setup } from "./utils/web3Setup";
-import { abi, address } from "../deployments/mumbai/TestERC721.json";
+import { web3Setup } from "../utils/web3Setup";
+import { abi, address } from "../../deployments/mumbai/TestERC721.json";
 
 export async function mintNFT(): Promise<MintData> {
   try {
