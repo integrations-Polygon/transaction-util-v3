@@ -6,7 +6,8 @@ import "solidity-coverage";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "@nomiclabs/hardhat-etherscan";
-import { getExplorerApiKeyMumbai, getPrivateKeyMumbai, getInfuraProjectId } from "./config";
+import { getExplorerApiKeyMumbai, getPrivateKeyMumbai } from "./envConfig";
+import { MUMBAI_RPC_URL } from "./scripts/utils/constants";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -27,7 +28,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     mumbai: {
-      url: `https://polygon-mumbai.infura.io/v3/${getInfuraProjectId()}`,
+      url: MUMBAI_RPC_URL,
       gasPrice: "auto",
       accounts: getPrivateKeyMumbai() !== undefined ? [getPrivateKeyMumbai()] : [],
     },
