@@ -22,15 +22,24 @@ export async function heimdalMilestoneApi(
     */
     if (!tx || !yourBlock) throw new Error("Transaction or block number is undefined");
 
-    console.log(`Waiting for your block to get finalised...`);
+    console.log(`Waiting for your block to get finalised...\n`);
+
+    /* 
+      Store the last known finalized block value; this is to avoid log spams 
+    */
+    let lastFinalizedBlock: number | null = null;
 
     do {
-      /*
-        This can be commented if we don't want see realtime stats
-      */
-      console.log(
-        `Finalised Block: ${(await milestoneFinalisedBlock()).endBlock} vs Your Block: ${yourBlock}`
-      );
+      const finalizedBlock = (await milestoneFinalisedBlock()).endBlock;
+
+      if (lastFinalizedBlock !== finalizedBlock) {
+        /*
+          This can be commented if we don't want see realtime stats,
+          Log the message only if the finalizedBlock value changes
+        */
+        console.log(`Finalised Block: ${finalizedBlock} vs Your Block: ${yourBlock}`);
+        lastFinalizedBlock = finalizedBlock;
+      }
     } while (
       /*
         Check if your block has achieved finality
@@ -43,14 +52,14 @@ export async function heimdalMilestoneApi(
     */
     const newTimestamp = Date.now();
     const totalMilestoneDuration = await msToMinAndSec(newTimestamp - timestamp);
-    console.log(`Total time for new Milestone to be added in heimdal: ${totalMilestoneDuration}`);
+    console.log(`\nTotal time for new Milestone to be added in heimdal: ${totalMilestoneDuration}`);
 
     /*
       Log the total duration in mins and sec
     */
     const totalFinalityDuration = await msToMinAndSec(newTimestamp - mintedNftTimestamp);
-    console.log(`\nThe total duration required for the block to achieve finality: ${totalFinalityDuration}`);
-    console.log(`Your Block: ${yourBlock} is now finalized!`);
+    console.log(`Total duration required for the block to achieve finality: ${totalFinalityDuration}`);
+    console.log(`\nYour Block: ${yourBlock} is now finalized!`);
   } catch (error) {
     console.log(`Error at heimdalMilestoneApi: ${error}`);
     process.exit(1);

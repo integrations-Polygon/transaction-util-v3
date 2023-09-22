@@ -4,11 +4,17 @@ import { msToMinAndSec } from "./utils/msToMinAndSec";
 
 export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: number): Promise<void> {
   try {
-    console.log(`Waiting for your block to get finalised...`);
+    console.log(`Waiting for your block to get finalised...\n`);
     /* 
       Set flag for block finality 
     */
     let finalised: boolean = false;
+
+    /* 
+      Store the last known finalized block value; this is to avoid log spams 
+    */
+    let lastFinalizedBlock: number | null = null;
+
     while (!finalised) {
       const response = (
         await axios.post(MUMBAI_RPC_URL, {
@@ -22,12 +28,17 @@ export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: nu
       /* 
         Convert hex to number
       */
-      const finalizedBlock = parseInt(response.result.number, 16);
+      const finalizedBlock = parseInt(response.result.number.toString(), 16);
+      // console.log(`hexToNumber: ${response.result.number} to ${finalizedBlock}`);
 
-      /*
-        This can be commented if we don't want see realtime stats
-      */
-      console.log(`Finalised Block: ${finalizedBlock} vs Your Block: ${yourBlock}`);
+      if (lastFinalizedBlock !== finalizedBlock) {
+        /*
+          This can be commented if we don't want see realtime stats,
+          Log the message only if the finalizedBlock value changes
+        */
+        console.log(`Finalised Block: ${finalizedBlock} vs Your Block: ${yourBlock}`);
+        lastFinalizedBlock = finalizedBlock;
+      }
 
       /*
         Check if your block has achieved finality
@@ -43,10 +54,8 @@ export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: nu
         */
         const newTimestamp = Date.now();
         const totalFinalityDuration = await msToMinAndSec(newTimestamp - mintedNftTimestamp);
-        console.log(
-          `\nThe total duration required for the block to achieve finality: ${totalFinalityDuration}`
-        );
-        console.log(`Your Block: ${yourBlock} is now finalized!`);
+        console.log(`\nTotal duration required for the block to achieve finality: ${totalFinalityDuration}`);
+        console.log(`\nYour Block: ${yourBlock} is now finalized!`);
       }
     }
   } catch (error) {
