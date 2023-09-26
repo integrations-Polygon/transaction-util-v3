@@ -4,7 +4,7 @@ import { heimdalMilestoneApi } from "./milestoneApis/heimdalMilestoneApi";
 import { ethJsonRpcMethod } from "./milestoneApis/ethJsonRpcMethod";
 const prompt = ps();
 
-const issueToken = async () => {
+const startScript = async () => {
   try {
     /* ---------------------------- INPUT ------------------------------ */
 
@@ -47,7 +47,7 @@ const issueToken = async () => {
   }
 };
 
-issueToken()
+startScript()
   .then(() => {
     console.log("\n\n---------- ENDING ALL PROCESS ----------\n\n");
     process.exit(0);
