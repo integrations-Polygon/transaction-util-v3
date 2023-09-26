@@ -1,4 +1,4 @@
-# **Transaction-Util-V2**
+# **Transaction-util-v3**
 
 **Transaction-util-v3** is a utility that utilize Polygon's powerfull tools such as **Polygon's gas station network API** to ensure that your transaction has the latest gas prices and etherjs **gas estimator** method to estimate your transaction **gasLimit** before sending it to the Polygon network in a robust manner. It also makes sure to check for your transaction block finality by utilizing the latest **PIP-11 Milestone's Heimdal API** or using the newly added eth **finality tag** in **eth JSON RPC API** for the method **eth_getBlockByNumber** for the Polygon Network.
 
