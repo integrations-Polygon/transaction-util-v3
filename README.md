@@ -33,7 +33,7 @@ yarn
 - Create `.env` file
 
 ```bash
-cp .example.env .env
+cp .env.example .env
 
 ```
 
