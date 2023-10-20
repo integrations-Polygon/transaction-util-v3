@@ -22,10 +22,10 @@ export const getExplorerApiKeyMatic = (): string => {
 };
 
 export const getPrivateKeyMatic = (): string => {
-  const privateKeyMatic = process.env.privateKeyMatic;
+  const privateKeyMatic = process.env.PRIVATE_KEY_MATIC;
 
   if (!privateKeyMatic) {
-    throw new Error("privateKeyMatic environment variable is not set.");
+    throw new Error("PRIVATE_KEY_MATIC environment variable is not set.");
   }
 
   return privateKeyMatic;
