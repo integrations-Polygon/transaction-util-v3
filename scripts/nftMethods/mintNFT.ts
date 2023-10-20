@@ -70,7 +70,7 @@ export async function mintNFT(): Promise<MintData> {
     */
     const mintedNftTimestamp = Date.now();
     const txHash: string = mintResponse.hash;
-    console.log("\nTransaction uriHash: ", txHash);
+    console.log("\nTransaction Hash: ", txHash);
 
     const txReceipt: ethers.providers.TransactionReceipt = await provider.getTransactionReceipt(txHash);
 
