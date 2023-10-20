@@ -41,8 +41,8 @@ cp .example.env .env
 
 ```
 INFURA_PROJECT_ID=<infura-project-id>
-PRIVATE_KEY_MUMBAI=<private-key-mumbai>
-EXPLORER_API_KEY_MUMBAI=<explorer-api-key-mumbai>
+PRIVATE_KEY_MATIC=<private-key-matic>
+EXPLORER_API_KEY_MATIC=<explorer-api-key-matic>
 
 ```
 
@@ -67,7 +67,7 @@ npx hardhat compile
 After that, to actually **deploy** the smart contract run this command
 
 ```bash
-npx hardhat deploy --network mumbai
+npx hardhat deploy --network matic
 
 ```
 
@@ -76,7 +76,7 @@ npx hardhat deploy --network mumbai
 It is always a good practice to **verify** your smart contract for future debugging sessions by simple running this command
 
 ```bash
-npx hardhat verify --network mumbai <deploy-contract-address> <if-any-arguments-seperated-by-space>
+npx hardhat verify --network matic <deploy-contract-address> <if-any-arguments-seperated-by-space>
 
 ```
 

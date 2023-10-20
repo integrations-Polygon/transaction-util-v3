@@ -6,8 +6,8 @@ import "solidity-coverage";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "@nomiclabs/hardhat-etherscan";
-import { getExplorerApiKeyMumbai, getPrivateKeyMumbai } from "./envConfig";
-import { MUMBAI_RPC_URL } from "./scripts/utils/constants";
+import { getExplorerApiKeyMatic, getPrivateKeyMatic } from "./envConfig";
+import { MATIC_RPC_URL } from "./scripts/utils/constants";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -27,10 +27,10 @@ const config: HardhatUserConfig = {
     user1: 4,
   },
   networks: {
-    mumbai: {
-      url: MUMBAI_RPC_URL,
+    matic: {
+      url: MATIC_RPC_URL,
       gasPrice: "auto",
-      accounts: getPrivateKeyMumbai() !== undefined ? [getPrivateKeyMumbai()] : [],
+      accounts: getPrivateKeyMatic() !== undefined ? [getPrivateKeyMatic()] : [],
     },
   },
   paths: {
@@ -45,7 +45,7 @@ const config: HardhatUserConfig = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: getExplorerApiKeyMumbai() || "",
+    apiKey: getExplorerApiKeyMatic() || "",
   },
 };
 

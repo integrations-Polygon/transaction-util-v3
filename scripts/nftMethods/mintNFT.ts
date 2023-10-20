@@ -3,7 +3,7 @@ import { Web3Setup, GasData, MintData } from "../utils/types";
 import { ethers } from "ethers";
 import crypto from "crypto";
 import { web3Setup } from "../utils/web3Setup";
-import { abi, address } from "../../deployments/mumbai/TestERC721.json";
+import { abi, address } from "../../deployments/matic/TestERC721.json";
 
 export async function mintNFT(): Promise<MintData> {
   try {
@@ -77,7 +77,7 @@ export async function mintNFT(): Promise<MintData> {
     if (!txReceipt) {
       throw new Error("\nTransaction was not found.");
     }
-    console.log(`Transaction Details: https://mumbai.polygonscan.com/tx/${txHash}`);
+    console.log(`Transaction Details: https://polygonscan.com/tx/${txHash}`);
 
     // Get the transaction data
     const tx: ethers.providers.TransactionResponse = await provider.getTransaction(txHash);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MUMBAI_RPC_URL } from "../utils/constants";
+import { MATIC_RPC_URL } from "../utils/constants";
 import { msToMinAndSec } from "../utils/msToMinAndSec";
 
 export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: number): Promise<void> {
@@ -17,7 +17,7 @@ export async function ethJsonRpcMethod(yourBlock: number, mintedNftTimestamp: nu
 
     while (!finalised) {
       const response = (
-        await axios.post(MUMBAI_RPC_URL, {
+        await axios.post(MATIC_RPC_URL, {
           jsonrpc: "2.0",
           id: 1,
           method: "eth_getBlockByNumber",

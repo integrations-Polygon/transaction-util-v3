@@ -11,22 +11,22 @@ export const getInfuraProjectId = (): string => {
   return infuraProjectId;
 };
 
-export const getExplorerApiKeyMumbai = (): string => {
-  const explorerApiKeyMumbai = process.env.EXPLORER_API_KEY_MUMBAI;
+export const getExplorerApiKeyMatic = (): string => {
+  const explorerApiKeyMatic = process.env.EXPLORER_API_KEY_MATIC;
 
-  if (!explorerApiKeyMumbai) {
-    throw new Error("EXPLORER_API_KEY_MUMBAI environment variable is not set.");
+  if (!explorerApiKeyMatic) {
+    throw new Error("EXPLORER_API_KEY_MATIC environment variable is not set.");
   }
 
-  return explorerApiKeyMumbai;
+  return explorerApiKeyMatic;
 };
 
-export const getPrivateKeyMumbai = (): string => {
-  const privateKeyMumbai = process.env.PRIVATE_KEY_MUMBAI;
+export const getPrivateKeyMatic = (): string => {
+  const privateKeyMatic = process.env.privateKeyMatic;
 
-  if (!privateKeyMumbai) {
-    throw new Error("PRIVATE_KEY_MUMBAI environment variable is not set.");
+  if (!privateKeyMatic) {
+    throw new Error("privateKeyMatic environment variable is not set.");
   }
 
-  return privateKeyMumbai;
+  return privateKeyMatic;
 };

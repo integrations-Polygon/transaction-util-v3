@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "npx hardhat clean",
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat deploy --network mumbai",
+    "deploy": "npx hardhat deploy --network matic",
     "startScript": "npx hardhat run scripts/startScript.ts",
     "eslint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
     "eslint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",

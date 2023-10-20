@@ -1,8 +1,8 @@
-import { getInfuraProjectId, getPrivateKeyMumbai } from "../../envConfig";
+import { getInfuraProjectId, getPrivateKeyMatic } from "../../envConfig";
 import { ethers } from "ethers";
 import { Web3Setup } from "./types";
 
-const privateKey = getPrivateKeyMumbai();
+const privateKey = getPrivateKeyMatic();
 const infuraProjectID = getInfuraProjectId();
 
 export async function web3Setup(): Promise<Web3Setup> {
@@ -11,7 +11,7 @@ export async function web3Setup(): Promise<Web3Setup> {
       USING INFURA PROVIDER
     */
     const provider: ethers.providers.InfuraProvider = new ethers.providers.InfuraProvider(
-      "maticmum",
+      "matic",
       infuraProjectID
     );
 
