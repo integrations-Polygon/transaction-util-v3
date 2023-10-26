@@ -52,8 +52,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
-    "dotenv": "^16.3.1",
-    "prompt-sync": "^4.2.0"
+    "dotenv": "^16.3.1"
   },
   "lint-staged": {
     "*.{ts,json,sol,md,yml}": "prettier --write"
